@@ -1,0 +1,21 @@
+{
+    "short_name": "SHORTNAME",
+    "name": "GAME_TITLE",
+    "icons": [
+        {
+            "src": "link.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "link_02.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "Test",
+    "display": "fullscreen",
+    "background_color": "#000",
+    "theme_color": "#fff",
+    "orientation": "landscape"
+}
