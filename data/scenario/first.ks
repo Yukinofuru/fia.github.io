@@ -134,9 +134,9 @@ if (mp['var']) eval(mp['var'] + ' = ' + tf.rand)
 ;menuボタンのマクロ
 [macro name="set_menu"]
 ; 透明なボタンの設置とターゲット、クラス名の設定
-[button graphic="transparent.png" enterimg="button_menu.png" role=menu name="menu_btn" x="1650" y="650" width="250" height="50" clickse="pi.ogg"]
-[button graphic="transparent.png" enterimg="button_log.png" role=backlog name="log_btn" x="1650" y="710" width="250" height="50" clickse="pi.ogg"]
-[button graphic="transparent.png" enterimg="button_lib.png" role="sleepgame" storage="Tips.ks" name="lib_btn" x="1650" y="770" width="250" height="50" clickse="pi.ogg"]
+[button graphic="transparent.png" enterimg="button_menu.png" role=menu name="menu_btn" x="1650" y="650" width="250" height="50" clickse="pi.mp3"]
+[button graphic="transparent.png" enterimg="button_log.png" role=backlog name="log_btn" x="1650" y="710" width="250" height="50" clickse="pi.mp3"]
+[button graphic="transparent.png" enterimg="button_lib.png" role="sleepgame" storage="Tips.ks" name="lib_btn" x="1650" y="770" width="250" height="50" clickse="pi.mp3"]
 [endmacro]
 
 ;---------------------------------------------------------------------------------------------------------------------
