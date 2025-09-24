@@ -114,8 +114,8 @@ SYSTEM-323>　記録時間07/07/2345 15:43PM[r][r]
 @layopt layer=2 visible=true time="100"
 
 [if exp="sf.SPI >50 && sf.click < 6"]
-[button graphic="transparent.png" x="180" y="85" width="1400" height="150" target="*clack" clickse="pi.mp3"]
-[button graphic="transparent.png" x="180" y="750" width="1400" height="150" target="*clack" clickse="pi.mp3"]
+[button graphic="transparent.png" x="180" y="85" width="1400" height="150" target="*clack" clickse="pi.ogg"]
+[button graphic="transparent.png" x="180" y="750" width="1400" height="150" target="*clack" clickse="pi.ogg"]
 [endif]
 [if exp="sf.click == 6"]
 [glink text="【４】唐舞橋の大蛇を倒す" color="button_53" x="420" y="678" size="34" target="*part_1_4"]

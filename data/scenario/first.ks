@@ -134,9 +134,9 @@ if (mp['var']) eval(mp['var'] + ' = ' + tf.rand)
 ;menuボタンのマクロ
 [macro name="set_menu"]
 ; 透明なボタンの設置とターゲット、クラス名の設定
-[button graphic="transparent.png" enterimg="button_menu.png" role=menu name="menu_btn" x="1650" y="650" width="250" height="50" clickse="pi.mp3"]
-[button graphic="transparent.png" enterimg="button_log.png" role=backlog name="log_btn" x="1650" y="710" width="250" height="50" clickse="pi.mp3"]
-[button graphic="transparent.png" enterimg="button_lib.png" role="sleepgame" storage="Tips.ks" name="lib_btn" x="1650" y="770" width="250" height="50" clickse="pi.mp3"]
+[button graphic="transparent.png" enterimg="button_menu.png" role=menu name="menu_btn" x="1650" y="650" width="250" height="50" clickse="pi.ogg"]
+[button graphic="transparent.png" enterimg="button_log.png" role=backlog name="log_btn" x="1650" y="710" width="250" height="50" clickse="pi.ogg"]
+[button graphic="transparent.png" enterimg="button_lib.png" role="sleepgame" storage="Tips.ks" name="lib_btn" x="1650" y="770" width="250" height="50" clickse="pi.ogg"]
 [endmacro]
 
 ;---------------------------------------------------------------------------------------------------------------------
@@ -144,7 +144,7 @@ if (mp['var']) eval(mp['var'] + ' = ' + tf.rand)
 ;選択肢ウィンドウの表示
 @layopt layer=1 visible=true
 [macro name="set_choose"]
-[image storage="Mask_day.PNG" layer="1" x="180" y="85" width="1440" height="900" time="500" wait="false"]
+[image storage="Mask_day.png" layer="1" x="180" y="85" width="1440" height="900" time="500" wait="false"]
 ;Mask_lightの表示
 [image name="Mask_light" storage="Mask_light.png" layer="1" x="0" y="0" time="500" wait="false"]
 [xanim name="Mask_light" keyframe="tate" count="infinite" time="3500" direction="normal" easing="linear"]
@@ -180,31 +180,31 @@ if (mp['var']) eval(mp['var'] + ' = ' + tf.rand)
 [free name="INS_M" layer="message0" time="100"]
 [free name="pulse_M" layer="message0" time="100"]
 [image name="INS_M" storage="INS/INS_5.png" layer="message0" zindex="101" x="1630" y="75"]
-[image name="pulse_M" storage="INS/pulse_2.PNG" layer="message0" zindex="98" x="1630" y="74"]
+[image name="pulse_M" storage="INS/pulse_2.png" layer="message0" zindex="98" x="1630" y="74"]
 [endif]
 [if exp="sf.INS ==4"]
 [free name="pulse_M" layer="message0" time="100"]
 [free name="INS_M" layer="message0" time="100"]
 [image name="INS_M" storage="INS/INS_4.png" layer="message0" zindex="101" x="1630" y="75"]
-[image name="pulse_M" storage="INS/pulse_2.PNG" layer="message0" zindex="98" x="1630" y="74"]
+[image name="pulse_M" storage="INS/pulse_2.png" layer="message0" zindex="98" x="1630" y="74"]
 [endif]
 [if exp="sf.INS ==3"]
 [free name="pulse_M" layer="message0" time="100"]
 [free name="INS_M" layer="message0" time="100"]
 [image name="INS_M" storage="INS/INS_3.png" layer="message0" zindex="101" x="1630" y="75"]
-[image name="pulse_M" storage="INS/pulse_2.PNG" layer="message0" zindex="98" x="1630" y="74"]
+[image name="pulse_M" storage="INS/pulse_2.png" layer="message0" zindex="98" x="1630" y="74"]
 [endif]
 [if exp="sf.INS ==2"]
 [free name="pulse_M" layer="message0" time="100"]
 [free name="INS_M" layer="message0" time="100"]
 [image name="INS_M" storage="INS/INS_2.png" layer="message0" zindex="101" x="1630" y="75"]
-[image name="pulse_M" storage="INS/pulse_1.PNG" layer="message0" zindex="98" x="1630" y="74"]
+[image name="pulse_M" storage="INS/pulse_1.png" layer="message0" zindex="98" x="1630" y="74"]
 [endif]
 [if exp="sf.INS ==1"]
 [free name="pulse_M" layer="message0" time="100"]
 [free name="INS_M" layer="message0" time="100"]
 [image name="INS_M" storage="INS/INS_1.png" layer="message0" zindex="101" x="1630" y="75"]
-[image name="pulse_M" storage="INS/pulse_1.PNG" layer="message0" zindex="98" x="1630" y="74"]
+[image name="pulse_M" storage="INS/pulse_1.png" layer="message0" zindex="98" x="1630" y="74"]
 [endif]
 [endmacro]
 
@@ -245,16 +245,16 @@ if (mp['var']) eval(mp['var'] + ' = ' + tf.rand)
 ; ゲームUI設定一般
 ;=========================================
 ;メッセージウィンドウの設定
-[position layer="message0" frame="UI_frame.PNG" left=0 top=0 width=1920 height=1200 opacity=255]
-[position layer="message1" frame="Mask.PNG" left=0 top=0 width=1920 height=1200 opacity=255]
+[position layer="message0" frame="UI_frame.png" left=0 top=0 width=1920 height=1200 opacity=255]
+[position layer="message1" frame="Mask.png" left=0 top=0 width=1920 height=1200 opacity=255]
 
 ;文字が表示される領域を調整
 [position layer=message0 page=fore margint="980" marginl="200" marginr="110" marginb="60"]
 [position layer=message1 page=fore margint="100" marginl="200" marginr="200" marginb="100"]
 
 ;INSメータの表示
-[image name="INS_M" storage="INS/INS_8.PNG" layer="message0" zindex="101" x="1630" y="75"]
-[image name="pulse_M" storage="INS/pulse_3.PNG" layer="message0" zindex="98" x="1630" y="74"]
+[image name="INS_M" storage="INS/INS_8.png" layer="message0" zindex="101" x="1630" y="75"]
+[image name="pulse_M" storage="INS/pulse_3.png" layer="message0" zindex="98" x="1630" y="74"]
 
 ;パルスメータを出現
 [image name="pulse_line" storage="INS/pulse_line.png" layer="message0" zindex="99" x="1600" y="75"]

@@ -7,8 +7,8 @@
 [ptext layer="0" x="310" y="400" color="#ffffffff" width="1900" size="150" edge="#000000ff" text="You have mutated"]
 @layopt layer=0 visible=true time="1000"
 [ptext layer="0" x="800" y="720" color="#ffffffff" width="1900" size="34" edge="#000000ff" text="Do you want to Undo?"]
-[glink text="Yes" color="button_52" x="800" y="800" size="34" target="*title" clickse="clickse.mp3"]
-[glink text="No" color="button_52" x="950" y="800" size="34" clickse="clickse.mp3"]
+[glink text="Yes" color="button_52" x="800" y="800" size="34" target="*title" clickse="clickse.ogg"]
+[glink text="No" color="button_52" x="950" y="800" size="34" clickse="clickse.ogg"]
 [s]
 
 *title
