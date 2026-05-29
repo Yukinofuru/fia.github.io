@@ -1,0 +1,313 @@
+/* device-Boy Style UI System for tips.ks */
+/* 共通変数定義的な色 */
+:root {
+    --device-color: #66cdaa;
+    --device-bg: rgba(0, 20, 0, 0.9);
+    --device-dim: rgba(102, 205, 170, 0.2);
+}
+
+/* コンテナ全体 */
+/* コンテナ全体 */
+.device-container {
+    position: absolute;
+    /* tips.ks の背景画像配置に合わせる */
+    top: 70px;
+    left: 100px;
+    width: 1720px;
+    height: 1030px;
+    background-color: rgba(0, 20, 0, 0.9);
+    border: 2px solid #66cdaa;
+    box-shadow: 0 0 20px rgba(102, 205, 170, 0.4), inset 0 0 50px rgba(0, 0, 0, 0.8);
+    color: #66cdaa;
+    font-family: "Tegomin", "Courier New", Courier, monospace;
+    font-weight: bold;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    /* すべての要素のサイズ計算をborder-boxにする */
+    box-sizing: border-box;
+    pointer-events: auto;
+}
+
+/* コンテナ内の全要素に box-sizing: border-box を適用 */
+.device-container * {
+    box-sizing: border-box;
+}
+
+/* ナビゲーションタブ */
+.device-nav {
+    display: flex;
+    border-bottom: 2px solid #66cdaa;
+    margin-bottom: 20px;
+    height: 60px;
+    flex-shrink: 0;
+}
+
+.nav-item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    cursor: pointer;
+    border-right: 1px solid #66cdaa;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.nav-item:last-child {
+    border-right: none;
+}
+
+.nav-item:hover {
+    background-color: rgba(102, 205, 170, 0.2);
+    box-shadow: 0 0 10px #66cdaa;
+}
+
+.nav-item.active {
+    background-color: #66cdaa;
+    color: #001100;
+    font-weight: 900;
+    box-shadow: 0 0 15px #66cdaa;
+}
+
+/* 色んなタブのコンテンツエリア共通 */
+.device-content {
+    display: none;
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    /* フェードインアニメーション用 */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.device-content.active {
+    display: flex;
+    /* Flexboxを有効化 */
+    opacity: 1;
+}
+
+/* 2カラムレイアウト (DATA, WORDなど) */
+#tab-inv.active,
+#tab-data.active {
+    flex-direction: row;
+}
+
+.col-list {
+    width: 35%;
+    border-right: 2px solid #66cdaa;
+    overflow-y: auto;
+    padding-right: 15px;
+    height: 100%;
+}
+
+.col-detail {
+    width: 65%;
+    padding-left: 30px;
+    overflow-y: auto;
+    font-size: 26px;
+    line-height: 1.6;
+    height: 100%;
+}
+
+/* リストアイテム */
+.list-item {
+    padding: 12px 15px;
+    border-bottom: 1px dotted rgba(102, 205, 170, 0.4);
+    cursor: pointer;
+    transition: background 0.1s;
+    font-size: 24px;
+}
+
+.list-item:hover {
+    background-color: rgba(102, 205, 170, 0.15);
+}
+
+.list-item.selected {
+    background-color: #66cdaa;
+    color: #000;
+}
+
+.list-item.locked {
+    color: rgba(102, 205, 170, 0.4);
+    pointer-events: none;
+}
+
+/* スキルタブ */
+#tab-stat {
+    flex-direction: column;
+}
+
+.skill-header {
+    font-size: 36px;
+    border-bottom: 4px double #66cdaa;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.skill-points-display {
+    text-align: right;
+    font-size: 32px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #66cdaa;
+    padding-bottom: 10px;
+}
+
+#skill-list-container {
+    overflow-y: auto;
+    flex: 1;
+}
+
+.skill-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10px;
+    border-bottom: 1px solid rgba(102, 205, 170, 0.3);
+    font-size: 30px;
+}
+
+.skill-row:hover {
+    background-color: rgba(102, 205, 170, 0.05);
+}
+
+.skill-name {
+    flex: 1;
+}
+
+.skill-btn {
+    background: transparent;
+    border: 2px solid #66cdaa;
+    color: #66cdaa;
+    width: 46px;
+    height: 46px;
+    line-height: 42px;
+    text-align: center;
+    font-size: 34px;
+    cursor: pointer;
+    margin-left: 20px;
+    vertical-align: middle;
+    transition: all 0.1s;
+}
+
+.skill-btn:hover:not(:disabled) {
+    background-color: #66cdaa;
+    color: #000;
+}
+
+.skill-btn:disabled {
+    border-color: rgba(102, 205, 170, 0.3);
+    color: rgba(102, 205, 170, 0.3);
+    cursor: default !important;
+    /* 重要：ここでもcursorを指定 */
+}
+
+.skill-value {
+    font-weight: bold;
+    font-size: 34px;
+    display: inline-block;
+    width: 50px;
+    text-align: right;
+}
+
+/* チャットタブ */
+.chat-area {
+    padding: 40px;
+    font-size: 28px;
+    border: 1px dashed #66cdaa;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* フッター */
+.device-footer {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-top: 2px solid #66cdaa;
+    margin-top: 15px;
+    padding-top: 10px;
+}
+
+.footer-btn {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid #66cdaa;
+    color: #66cdaa;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px 40px;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    font-family: inherit;
+    font-weight: bold;
+}
+
+.footer-btn:hover {
+    background-color: #66cdaa;
+    color: #000;
+    box-shadow: 0 0 15px #66cdaa;
+}
+
+/* スクロールバー装飾 */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 20, 0, 0.5);
+    border-left: 1px solid #66cdaa;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #66cdaa;
+    border: 1px solid #000;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #88ffcc;
+}
+
+/* アニメーション用クラス */
+@keyframes flicker {
+    0% {
+        opacity: 0.9;
+    }
+
+    5% {
+        opacity: 0.8;
+    }
+
+    10% {
+        opacity: 0.95;
+    }
+
+    15% {
+        opacity: 0.85;
+    }
+
+    100% {
+        opacity: 0.9;
+    }
+}
+
+.device-container::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+}
