@@ -11293,3 +11293,26 @@
   opacity: 1;
   transform: translateX(0);
 }
+
+.button_54 {
+  /* ベースのスタイル */
+  display: inline-block;
+  position: relative;
+  background-color: transparent; 
+  border: none;               
+  box-shadow: none;            
+  
+  color: white;            
+  font-weight: 400;
+  font-size: 24px;      
+  cursor: pointer;
+  text-decoration: none;
+  padding: 10px 20px;   
+  
+  transition: color 0.3s;     
+}
+
+/* ホバー時のスタイル */
+.button_54:hover {
+  color: #66cdabff;          
+}

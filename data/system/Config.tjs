@@ -74,7 +74,7 @@
 ;defaultFontSize=34
 ;defaultLineSpacing=13
 ;defaultPitch=0
-;userFace=幻, SoukouMincho, VT323, GSRR, Quicksand, 游ゴシック体, Yu Gothic, YuGothic, ヒラギノ角ゴシック Pro, Hiragino Kaku Gothic Pro, メイリオ, Meiryo, Osaka, ＭＳ Ｐゴシック, MS PGothic, sans-serif, Arial
+;userFace=Tegomin, VT323, Quicksand, 游ゴシック体, Yu Gothic, YuGothic, ヒラギノ角ゴシック Pro, Hiragino Kaku Gothic Pro, メイリオ, Meiryo, Osaka, ＭＳ Ｐゴシック, MS PGothic, sans-serif, Arial
 ;defaultChColor=0xffffff
 ;defaultBold=false
 ;defaultRubySize=10

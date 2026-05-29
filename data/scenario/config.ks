@@ -1,9 +1,10 @@
 ;=========================================
 ; コンフィグ モード　画面作成
 ;=========================================
+[mask time="200"]
 	
 ;	メッセージレイヤ0を不可視に
-	[layopt layer="message0" visible="false"]
+	[layopt layer="message1" visible="false"]
 
 ;	fixボタンをクリア
 	[clearfix]
@@ -148,7 +149,7 @@ config_items.forEach(function(item){
     y: item.texty,
     text: eval(item.var),
     color: "#66cdaa",
-    time: "100",
+    time: "0",
     size: "32",
     face: "幻",
     wait: "false"
@@ -191,6 +192,8 @@ TYRANO.kag.ftag.startTag("switch", {
 
 [endscript]
 
+[mask_off time="200"]
+
 [s]
 
 ;--------------------------------------------------------------------------------
@@ -202,7 +205,7 @@ TYRANO.kag.ftag.startTag("switch", {
 TG.config.alreadyReadTextColor = tf.user_setting; // 既読テキストの文字色を復帰
 [endscript]
 ;	テキスト速度のサンプル表示に使用していたメッセージレイヤを非表示に
-[layopt layer="message1" visible="false"]
+[layopt layer="message0" visible="false"]
 
 ;	fixボタンをクリア
 [clearfix]
@@ -227,7 +230,7 @@ TG.config.alreadyReadTextColor = tf.user_setting; // 既読テキストの文字
 *vol_bgm_change
 
 [clearfix name="bgmvoltext"]
-[ptext name="bgmvoltext" layer="fix" x="1500" y="350" text="&tf.current_bgm_vol" color="#66cdaa" time="100" size="32" face="幻" wait="false"]
+[ptext name="bgmvoltext" layer="fix" x="1500" y="350" text="&tf.current_bgm_vol" color="#66cdaa" time="0" size="32" face="幻" wait="false"]
 [bgmopt volume="&tf.current_bgm_vol"]
 [return]
 
@@ -237,7 +240,7 @@ TG.config.alreadyReadTextColor = tf.user_setting; // 既読テキストの文字
 *vol_se_change
 
 [clearfix name="sevoltext"]
-[ptext name="sevoltext" layer="fix" x="1500" y="440" text="&tf.current_se_vol" color="#66cdaa" time="100" size="32" face="幻" wait="false"]
+[ptext name="sevoltext" layer="fix" x="1500" y="440" text="&tf.current_se_vol" color="#66cdaa" time="0" size="32" face="幻" wait="false"]
 [seopt volume="&tf.current_se_vol"]
 
 [return]
@@ -248,32 +251,12 @@ TG.config.alreadyReadTextColor = tf.user_setting; // 既読テキストの文字
 *ch_speed_change
 	[clearfix name="chtext"]
 	[iscript]
-	tf.set_ch_speed = 100-tf.set_ch_speed_alt;
+	tf.set_ch_speed = 100-parseInt(tf.set_ch_speed_alt);
 	tf.current_ch_speed = tf.set_ch_speed;
 	[endscript]
-	[ptext name="chtext" layer="fix" x="1500" y="595" text="&tf.set_ch_speed_alt" color="#66cdaa" time="100" size="32" face="幻" wait="false"]
+	[ptext name="chtext" layer="fix" x="1500" y="595" text="&tf.set_ch_speed_alt" color="#66cdaa" time="0" size="32" face="幻" wait="false"]
 
 	[configdelay speed="&tf.set_ch_speed"]
-
-;	テキスト表示速度のサンプルに使用するメッセージレイヤの設定
-	[position layer="message1" left="100" top="920" width="1720" height="300" margint="10" marginl="10" page="fore" visible="true" opacity="0"]
-	[layopt layer="message1" visible="true"]
-	[current layer="message1"]
-
-;	サンプルテキストを表示する
-	[emb exp="tf.text_sample"]
-
-		[iscript]
-		$(".current_span").css("color","#66cdaa"); // サンプルテキストのフォントカラーを指定
-		tf.system.backlog.pop(); // サンプルテキストを履歴から削除（nolog～endnologタグと同じです）
-		[endscript]
-
-;	待ち時間をテキスト速度とサンプルの文字数に対応（消えるのが早すぎるときは後ろの数字を好きなだけ増やそう）
-	[eval exp="tf.text_sample_speed = tf.set_ch_speed * tf.text_sample.length+700"]
-	[wait time="&tf.text_sample_speed"]
-
-	[er]
-	[layopt layer="message1" visible="false"]
 
 [return]
 
@@ -282,7 +265,7 @@ TG.config.alreadyReadTextColor = tf.user_setting; // 既読テキストの文字
 ;--------------------------------------------------------------------------------
 *auto_speed_change
 	[clearfix name="autotext"]
-	[ptext name="autotext" layer="fix" x="1500" y="690" text="&tf.set_auto_speed" color="#66cdaa" time="100" size="32" face="幻" wait="false"]
+	[ptext name="autotext" layer="fix" x="1500" y="690" text="&tf.set_auto_speed" color="#66cdaa" time="0" size="32" face="幻" wait="false"]
 
 	[autoconfig speed="&tf.set_auto_speed"]
 

@@ -19,22 +19,8 @@
 }
 
 @font-face {
-    font-family: "SoukouMincho";
-    src: url("../../data/others/font/SoukouMincho.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "GSRR";
-    src: url("../../data/others/font/OradanoGSRR.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "幻";
-    src: url("../../data/others/font/幻ノにじみ明朝.otf") format("opentype");
+    font-family: "Tegomin";
+    src: url("../../data/others/font/NewTegomin-Regular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
