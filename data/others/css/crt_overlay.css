@@ -1,0 +1,213 @@
+/* CRTモニター風オーバーレイ (Noise Motion Version) */
+.crt-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* Config画面などの上にも表示されるように極端に高い値を設定 */
+    z-index: 2147483647;
+    /* 走査線パターン（細かい横線） */
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0),
+            rgba(255, 255, 255, 0) 50%,
+            rgba(0, 0, 0, 0.4) 50%,
+            rgba(0, 0, 0, 0.4));
+    background-size: 100% 4px;
+}
+
+/* 画面端の暗さ（ビネット） */
+.crt-overlay::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.6) 90%, rgba(0, 0, 0, 1.0) 100%);
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.9);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* 画面更新エフェクト（太い走査線が流れる） */
+.crt-overlay::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.02) 10%,
+            /* 白の極薄 */
+            rgba(255, 255, 255, 0.05) 50%,
+            /* 更新線（白・薄め） */
+            rgba(255, 255, 255, 0.02) 90%,
+            rgba(255, 255, 255, 0) 100%);
+    background-size: 100% 150%;
+    animation: scanline 8s linear infinite;
+    pointer-events: none;
+    z-index: 3;
+}
+
+/* 荒いノイズ（動くザラザラ感） */
+.crt-noise {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* 画面サイズに合わせて調整 */
+    height: 100%;
+    pointer-events: none;
+    z-index: 2147483646;
+    /* Overlayの直下、画面の最前面 */
+
+    /* ノイズパターン生成 */
+    background-image: repeating-radial-gradient(circle,
+            rgba(0, 0, 0, 0.2) 0,
+            rgba(0, 0, 0, 0.2) 1px,
+            transparent 2px,
+            transparent 100%);
+    background-size: 3px 3px;
+    opacity: 0.4;
+    /* ノイズの濃さ */
+
+    /* ノイズを激しく動かして揺らぎを表現 */
+    animation: noise-anim 0.2s infinite;
+}
+
+/* アニメーション定義 */
+@keyframes scanline {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+}
+
+/* ノイズ位置をランダムにずらしてチラつきを作るアニメーション */
+@keyframes noise-anim {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    10% {
+        transform: translate(-5px, -10px);
+    }
+
+    20% {
+        transform: translate(-10px, 5px);
+    }
+
+    30% {
+        transform: translate(5px, -15px);
+    }
+
+    40% {
+        transform: translate(-5px, 15px);
+    }
+
+    50% {
+        transform: translate(-15px, 5px);
+    }
+
+    60% {
+        transform: translate(15px, 0);
+    }
+
+    70% {
+        transform: translate(0, 15px);
+    }
+
+    80% {
+        transform: translate(-15px, -5px);
+    }
+
+    90% {
+        transform: translate(10px, 10px);
+    }
+
+    100% {
+        transform: translate(5px, 0);
+    }
+}
+
+/* テキストの発光強化と色強制（緑） */
+.message0_fore,
+.message1_fore,
+.message_inner {
+    color: #66cdaa !important;
+    text-shadow: 0 0 5px rgba(102, 205, 171, 0.8), 0 0 10px rgba(102, 205, 171, 0.5);
+}
+
+/* キャラクター名の文字色設定（強制緑） */
+.chara_name_area,
+.tyrano_chara,
+.name_layer {
+    color: #66cdaa !important;
+    text-shadow: 0 0 5px rgba(102, 205, 171, 0.8) !important;
+    font-weight: bold;
+}
+
+/* ConfigやSave/Load画面のテキストも見やすくする（緑色強制） */
+.menu_item,
+.save_list_item,
+.log_body {
+    text-shadow: 0 0 4px rgba(102, 205, 171, 0.6);
+}
+
+/* 設定画面などの背景にもノイズがかかるように調整 */
+.layer_menu,
+.display_menu {
+    /* 必要に応じて背景色などを調整可能 */
+}
+
+/* ホバー時の色変更 */
+span[style*='cursor: pointer']:hover,
+.save_list_item:hover {
+    color: white !important;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 1), 0 0 15px rgba(255, 255, 255, 0.8);
+    transition: color 0.1s, text-shadow 0.1s;
+}
+
+/* glinkを通常のlinkタグのように見せるスタイル */
+.glink_link_like {
+    background: none !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: #66cdaa !important;
+    text-shadow: 0 0 5px rgba(102, 205, 171, 0.8), 0 0 10px rgba(102, 205, 171, 0.5) !important;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 0 !important;
+    margin: 0 !important;
+    text-align: left !important;
+}
+
+.glink_link_like:hover {
+    color: white !important;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 1), 0 0 15px rgba(255, 255, 255, 0.8) !important;
+    background: none !important;
+    background-color: transparent !important;
+    transform: none !important;
+    /* ボタンの押し込みエフェクトなどを無効化 */
+}

@@ -1,0 +1,21 @@
+.daily-tutorial-next {
+    box-sizing: border-box;
+    padding: 0 !important;
+    margin: 0 !important;
+    text-align: center !important;
+    line-height: normal !important;
+    border: 1px solid #66cdaa !important;
+    border-radius: 0 !important;
+    background: #10251d !important;
+    color: #b8e5d5 !important;
+    text-shadow: none !important;
+    font-family: Tegomin, serif !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+.daily-tutorial-next:hover,
+.daily-tutorial-next:focus-visible {
+    background: #66cdaa !important;
+    color: #050c0a !important;
+}

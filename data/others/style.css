@@ -1,0 +1,18 @@
+/* 意識朦朧（黒の明滅）用のアニメーション */
+@keyframes dazed-loop {
+  0%   { opacity: 0; }
+  50%  { opacity: 0.85; } /* 暗さの限界。完全に真っ黒にしたいなら 1 に変更 */
+  100% { opacity: 0; }
+}
+
+.dazed-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  pointer-events: none; /* クリックを透過させる */
+  z-index: 999;        /* 画面の一番手前に表示 */
+  animation: dazed-loop 3s infinite ease-in-out; /* 3秒周期でループ */
+}
