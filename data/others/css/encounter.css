@@ -1,0 +1,43 @@
+/* ui_showChoicesの下線・if・配線を探索でも使用する。 */
+#tyrano_base .glink_button.choice-btn.encounter-choice {
+    line-height: 1.35;
+    white-space: normal;
+    letter-spacing: 3px;
+    padding: 8px 30px;
+    min-height: 70px;
+    margin: 0;
+    overflow-wrap: anywhere;
+    line-break: strict;
+}
+#tyrano_base .glink_button.choice-btn.encounter-choice.choice-disabled {
+    pointer-events: none;
+}
+#tyrano_base .encounter-wire {
+    position: absolute;
+    height: 4px;
+    background: #2a5a4a;
+    transform-origin: left center;
+    animation: encounter-draw-wire 0.25s linear both, color-shift 0.8s forwards;
+    animation-delay: var(--encounter-wire-delay), var(--encounter-wire-delay);
+}
+#tyrano_base .encounter-wire-disabled {
+    background: #333;
+    box-shadow: none;
+    animation-name: encounter-draw-wire;
+}
+@keyframes encounter-draw-wire {
+    from { clip-path: inset(0 100% 0 0); }
+    to { clip-path: inset(0 0 0 0); }
+}
+#encounter-timer {
+    position:absolute;left:1110px;top:125px;width:430px;
+    font:36px monospace;color:#ff9940;text-align:right;pointer-events:none;
+}
+
+#tyrano_base .encounter-choice::before {
+    flex: 0 0 12px;
+}
+/* 探索では意味のない飾りタイトル・閉じるボタンを表示しない。 */
+#tyrano_base .encounter-window::before {
+    content: none;
+}

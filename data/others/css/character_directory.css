@@ -1,0 +1,77 @@
+/* LIBの色を継承し、電話帳の索引とカルテの罫線を描き分ける。 */
+.fia-directory {
+    --directory-color: #66cdaa;
+    --directory-bg: rgba(0, 20, 0, 0.96);
+    --directory-dim: rgba(102, 205, 170, 0.2);
+    position: absolute;
+    left: 175px;
+    top: 65px;
+    width: 1450px;
+    height: 816px;
+    padding: 30px 34px 24px;
+    z-index: 100;
+    background: var(--directory-bg);
+    color: var(--directory-color);
+    border: 2px solid var(--directory-color);
+    box-shadow: 0 0 20px rgba(102, 205, 170, 0.25), inset 0 0 50px rgba(0, 0, 0, 0.8);
+    font-family: "Tegomin", "Courier New", monospace;
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+}
+.fia-directory, .fia-directory * { box-sizing: border-box; }
+.fia-directory .directory-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--directory-color);
+    padding-bottom: 19px;
+    gap: 24px;
+    flex-shrink: 0;
+}
+.fia-directory h1 { font-size: 36px; margin: 0; letter-spacing: 0.16em; }
+.fia-directory .directory-header small { display: block; font-size: 16px; letter-spacing: 0.2em; margin-bottom: 5px; opacity: 0.7; }
+.fia-directory .directory-date { font-size: 23px; white-space: nowrap; }
+.fia-directory .directory-body { display: flex; flex: 1; min-height: 0; margin: 22px 0; gap: 28px; }
+.fia-directory .directory-roster { width: 39%; min-width: 0; display: flex; flex-direction: column; border-right: 1px solid var(--directory-color); padding-right: 24px; }
+.fia-directory .directory-roster-heading { display: flex; justify-content: space-between; font-size: 22px; padding: 0 4px 14px; border-bottom: 1px solid var(--directory-color); }
+.fia-directory .directory-count { font-size: 18px; opacity: 0.7; }
+.fia-directory .directory-list { overflow-y: auto; min-height: 0; flex: 1; padding: 8px 0; }
+.fia-directory button { font: inherit; cursor: pointer; }
+.fia-directory .directory-person {
+    color: inherit; background: transparent; border: 0; border-bottom: 1px dotted rgba(102, 205, 170, 0.4);
+    display: flex; align-items: center; gap: 18px; width: 100%; padding: 16px 12px; text-align: left; min-height: 65px;
+}
+.fia-directory .directory-person-index { font-size: 17px; min-width: 40px; opacity: 0.7; }
+.fia-directory .directory-person-name { font-size: 27px; }
+.fia-directory .directory-person:hover { background: var(--directory-dim); }
+.fia-directory .directory-person.is-selected { color: #001100; background: var(--directory-color); }
+.fia-directory .directory-person:focus-visible, .fia-directory button:focus-visible, .fia-directory summary:focus-visible { outline: 3px solid var(--directory-color); outline-offset: -4px; }
+.fia-directory .directory-detail { min-width: 0; flex: 1; overflow-y: auto; padding: 10px 22px 20px 10px; }
+.fia-directory .directory-empty { display: grid; place-content: center; min-height: 100%; text-align: center; font-size: 25px; opacity: 0.65; }
+.fia-directory .directory-eyebrow { font-size: 18px; letter-spacing: 0.15em; opacity: 0.75; }
+.fia-directory .directory-name { font-size: 42px; font-weight: normal; margin: 18px 0 12px; padding-bottom: 20px; border-bottom: 2px solid var(--directory-color); }
+.fia-directory .directory-reading { font-size: 19px; letter-spacing: 0.1em; margin: 0 0 28px; opacity: 0.7; }
+.fia-directory .directory-note { margin: 24px 0; }
+.fia-directory .directory-note h3 { font-size: 21px; font-weight: normal; margin: 0 0 12px; padding-bottom: 8px; border-bottom: 1px dotted rgba(102, 205, 170, 0.4); }
+.fia-directory .directory-note p { font-size: 23px; line-height: 1.8; margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.fia-directory .directory-muted { opacity: 0.65; }
+.fia-directory .directory-record { border-bottom: 1px dotted rgba(102, 205, 170, 0.3); padding: 12px 0; }
+.fia-directory .directory-record summary { cursor: pointer; font-size: 22px; }
+.fia-directory .directory-record p { margin-top: 14px; padding: 12px; background: rgba(102, 205, 170, 0.06); }
+.fia-directory .directory-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--directory-color); padding-top: 18px; gap: 20px; flex-shrink: 0; }
+.fia-directory .directory-footer p { margin: 0; font-size: 18px; opacity: 0.7; }
+.fia-directory .directory-actions { display: flex; gap: 14px; flex-shrink: 0; }
+.fia-directory .directory-actions button { border: 1px solid var(--directory-color); background: transparent; color: inherit; padding: 12px 24px; min-width: 150px; font-size: 24px; }
+.fia-directory .directory-actions .directory-action { background: var(--directory-color); color: #001100; min-width: 230px; }
+.fia-directory .directory-actions button:hover:not(:disabled) { box-shadow: 0 0 12px var(--directory-dim); }
+.fia-directory .directory-actions button:disabled { opacity: 0.35; cursor: default; }
+.fia-directory .directory-detail::-webkit-scrollbar, .fia-directory .directory-list::-webkit-scrollbar { width: 8px; }
+.fia-directory .directory-detail::-webkit-scrollbar-thumb, .fia-directory .directory-list::-webkit-scrollbar-thumb { background: rgba(102, 205, 170, 0.35); }
+/* 電話帳は左に五十音の見出し、右に連絡先の覚え書き。 */
+.fia-directory.directory-phone .directory-body { border-left: 7px double rgba(102, 205, 170, 0.45); padding-left: 20px; }
+.fia-directory.directory-phone .directory-person-index { border: 1px solid rgba(102, 205, 170, 0.45); text-align: center; padding: 5px 0; }
+/* カルテを左、名簿を右に置き、診療記録らしい罫線と番号を使う。 */
+.fia-directory.directory-medical .directory-roster { order: 2; width: 33%; border-right: 0; border-left: 1px solid var(--directory-color); padding-right: 0; padding-left: 24px; }
+.fia-directory.directory-medical .directory-detail { border: 1px solid rgba(102, 205, 170, 0.4); padding: 24px 28px; background: repeating-linear-gradient(transparent, transparent 40px, rgba(102, 205, 170, 0.045) 40px, rgba(102, 205, 170, 0.045) 41px); }
+.fia-directory.directory-medical .directory-name { margin-top: 12px; }

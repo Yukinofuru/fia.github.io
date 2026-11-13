@@ -1,0 +1,138 @@
+#irm-mix {
+    /* message1 の ui_frame.png の窓内に収める。外枠は message1 が描画する。 */
+    position: absolute; left: 180px; top: 80px; width: 1440px; height: 810px;
+    box-sizing: border-box; padding: 28px 40px; overflow: auto;
+
+    font: 28px/1.35 Tegomin, Meiryo, serif; pointer-events: auto;
+}
+#irm-mix h1 { margin: 0; color: var(--terminal-ink); font-size: 29px; letter-spacing: .09em; }
+#irm-mix h2 { margin: 0 0 22px; font-size: 28px; }
+#irm-mix h3 { margin: 22px 0 10px; font-size: 22px; color: var(--terminal-ink); }
+#irm-mix p { margin: 10px 0; }
+#irm-mix button, #irm-mix select {
+    margin: 5px 10px 5px 0; padding: 8px 16px; font: inherit;
+    border: 1px solid var(--terminal-line-dim); color: var(--terminal-ink); background: var(--terminal-control);
+}
+#irm-mix button { cursor: pointer; }
+#irm-mix button:hover, #irm-mix button:focus-visible, #irm-mix button[aria-pressed="true"] {
+    color: var(--terminal-active-ink); background: var(--terminal-active);
+}
+#irm-mix button:disabled { opacity: .4; cursor: default; }
+.irm-header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 0 6px 8px;
+}
+#irm-mix .irm-kicker { margin: 0; color: var(--terminal-ink); font-size: 21px; letter-spacing: .08em; }
+.irm-steps {
+    display: grid; grid-template-columns: repeat(3, 1fr); margin: 0 0 16px;
+    border-block: 1px solid #31766a; font-size: 22px; letter-spacing: .1em;
+}
+.irm-steps span { padding: 4px 12px; text-align: center; }
+.irm-steps span + span { border-left: 1px solid var(--terminal-line-dim); }
+.irm-steps [aria-current="step"] {
+    color: var(--terminal-active-ink); background: var(--terminal-active); box-shadow: inset 0 -2px #7fcaaf;
+}
+.irm-columns { display: grid; grid-template-columns: 350px minmax(0, 1fr) 310px; gap: 14px; }
+.irm-columns section, .irm-mix-controls {
+    padding: 14px; border: 1px solid var(--terminal-line-dim); background: var(--terminal-panel);
+}
+.irm-columns .irm-chart { background: #092011; }
+.irm-columns .irm-controls, .irm-mix-controls { background: var(--terminal-panel); }
+.irm-columns h2, .irm-mix-controls h2 {
+    color: #66cdaa; font-size: 23px !important; border-bottom: 1px solid #315849; padding-bottom: 9px;
+    margin-bottom: 12px !important;
+}
+.irm-scan h2, .irm-controls h2 { text-align: center; }
+.irm-columns .irm-chart-id { border-bottom: 1px solid #31766a; }
+.irm-injuries { list-style: none; margin: 0; padding: 0; }
+.irm-injuries li {
+    display: grid; grid-template-columns: 78px 68px 1fr; gap: 8px; align-items: baseline; padding: 8px 0;
+    border-bottom: 1px solid #213a2e; font-size: 23px;
+}
+.irm-severity { color: var(--terminal-ink); }
+.irm-symptom { color: #a8d4c5; font-size: 20px; }
+.irm-dose-scale {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+    margin: 22px 0 0; font-size: 19px; color: #8db39f;
+}
+.irm-dose-scale dd { margin: 4px 0 0; color: #d7ffe8; white-space: nowrap; }
+.irm-dose { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 8px; }
+.irm-dose output { font: 44px/1 VT323, Tegomin, monospace; color: var(--terminal-ink); white-space: nowrap; }
+.irm-options { display: flex; flex-direction: column; gap: 5px; }
+#irm-mix .irm-controls button { margin: 0; padding: 5px 6px; font-size: 19px; }
+#irm-mix .irm-options button:not(:hover):not(:focus-visible):not([aria-pressed="true"]) {
+    color: var(--terminal-ink); background: transparent;
+}
+#irm-mix .irm-primary {
+    color: var(--terminal-ink); background: #0b2c1c; border: 1px solid #428d7d;
+}
+#irm-mix .irm-primary:hover, #irm-mix .irm-primary:focus-visible { color: #050a07; background: var(--terminal-active); }
+#irm-mix .irm-controls .irm-primary { width: 100%; margin: 24px 0 12px; padding: 12px; font-size: 25px; }
+.irm-part-list { list-style: none; margin: 0; padding: 0 14px; }
+.irm-zone {
+    display: flex; align-items: center; gap: 16px; padding: 10px 0;
+    border-bottom: 1px solid #263c38; color: #79a58e; font-size: 22px;
+}
+.irm-zone::before { content: ""; width: 10px; height: 10px; border: 1px solid currentColor; }
+.irm-zone[data-injury] { color: #a2f4d0; }
+.irm-zone[data-injury]::before { background: currentColor; }
+.irm-mix-layout { display: grid; grid-template-columns: minmax(0, 1fr) 310px; gap: 14px; }
+.irm-gauges {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; text-align: center;
+    padding: 16px; border: 1px solid var(--terminal-line-dim); background: #092011;
+}
+.irm-gauges section {
+    position: relative; display: grid; align-content: center;
+    padding: 26px 8px; border: 1px solid #3f5b55;
+    background: #11291a; box-shadow: inset 0 0 0 5px #031307;
+}
+.irm-gauges section::before, .irm-gauges section::after {
+    content: ""; position: absolute; width: 9px; height: 9px;
+    border: 1px solid #536e66; border-radius: 50%;
+    background: linear-gradient(135deg, #263a34 44%, #041108 44% 56%, #263a34 56%);
+    pointer-events: none;
+}
+.irm-gauges section::before { top: 11px; left: 11px; }
+.irm-gauges section::after { bottom: 11px; right: 11px; }
+.irm-gauges .irm-value { font-size: 21px; color: var(--terminal-ink); margin-top: 18px !important; }
+.irm-gauges .irm-matched { border-color: #66cdaa; }
+.irm-gauges .irm-matched .irm-value { color: #d7ffe8; }
+.irm-mixture { color: var(--terminal-ink); font: 34px/1.1 VT323, Tegomin, monospace; }
+.irm-mix-controls p { font-size: 22px; overflow-wrap: anywhere; }
+.irm-switches { display: grid; gap: 8px; margin: 20px 0; }
+#irm-mix .irm-switches button {
+    margin: 0; border-color: #55776d;
+    box-shadow: inset 0 2px #466059, inset 0 -4px #041108;
+}
+#irm-mix .irm-switches button:active { box-shadow: inset 0 2px 2px #041108; }
+.irm-mix-controls > button:not(.irm-primary) { width: 100%; margin-top: 8px !important; }
+.irm-result { max-width: 760px; padding: 26px; margin-bottom: 24px; border-left: 4px solid #66cdaa; background: #10251d; }
+.irm-failure { border-color: var(--terminal-ink); }
+.irm-failure h2 { color: #a2f4d0; }
+.irm-failure ul { margin-bottom: 0; padding-left: 28px; font-size: 23px; }
+.irm-tank {
+    position: relative; margin: auto; width: 76px; height: 288px;
+    border: 1px solid #73958a; background: #041108;
+    box-shadow: 0 0 0 7px #243733, 0 0 0 8px #041108;
+}
+.irm-tank::before {
+    content: ""; position: absolute; inset: 0 auto 0 -20px; width: 10px;
+    background: repeating-linear-gradient(to top, transparent 0 calc(25% - 1px), #8ba89e calc(25% - 1px) 25%);
+    pointer-events: none;
+}
+.irm-liquid {
+    position: absolute; bottom: 0; width: 100%; height: 0;
+    background: #1c6b49;
+    transition: height 180ms ease-out;
+}
+.irm-surface {
+    display: block; width: 100%; height: 2px; background: var(--terminal-ink);
+}
+.irm-marker {
+    position: absolute; right: -16px; width: 21px; border-top: 3px solid #a2f4d0;
+    transform: translateY(1px);
+    z-index: 2; pointer-events: none;
+}
+.irm-status { color: #a3edce; }
+.irm-debug { white-space: pre-line; padding-top: 12px; font-size: 21px; color: var(--terminal-ink); }
+@media (prefers-reduced-motion: reduce) { .irm-liquid { transition: none; } }

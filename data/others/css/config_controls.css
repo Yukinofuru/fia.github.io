@@ -1,0 +1,6 @@
+/* uiparts_setのラッパーも画像のfixボタンと同じく、前景レイヤーより手前に置く。 */
+#tyrano_base .fia-config-control {
+    position: absolute;
+    z-index: 9999999;
+    pointer-events: auto;
+}

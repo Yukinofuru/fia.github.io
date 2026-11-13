@@ -1,0 +1,50 @@
+/* 意識朦朧（黒の明滅）用のアニメーション */
+@keyframes dazed-loop {
+  0%   { opacity: 0; }
+  50%  { opacity: 0.85; } /* 暗さの限界。完全に真っ黒にしたいなら 1 に変更 */
+  100% { opacity: 0; }
+}
+
+.dazed-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  pointer-events: none; /* クリックを透過させる */
+  z-index: 999;        /* 画面の一番手前に表示 */
+  animation: dazed-loop 3s infinite ease-in-out; /* 3秒周期でループ */
+}
+
+/* 「Back To Title」の確認画面。本文と同じNew Tegominを使用する。 */
+.remodal.fia-back-to-title {
+    direction: rtl;
+    font-family: Tegomin, serif !important;
+    color: #66cdaa;
+    background: #08130f;
+    border: 1px solid #4b8d79;
+}
+
+.fia-back-to-title .remodal_title,
+.fia-back-to-title .remodal_txt,
+.fia-back-to-title button {
+    direction: ltr;
+}
+
+.fia-back-to-title .remodal_title {
+    font-size: 28px;
+    line-height: 1.2;
+}
+
+.fia-back-to-title button:is(#remodal-confirm, #remodal-cancel) {
+    font: inherit;
+    color: #a8e8d0;
+    background: #0b2c1c;
+    border: 1px solid #4b8d79;
+}
+
+.fia-back-to-title button:is(#remodal-confirm, #remodal-cancel):is(:hover, :focus-visible) {
+    color: #08130f;
+    background: #66cdaa;
+}
